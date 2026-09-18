@@ -1,0 +1,48 @@
+#NavBar {
+    position: sticky;
+    top: 0px;
+    background-color: rgb(22, 22, 65);
+    width: 100%;
+    padding: 10px 0 10px 0;
+}
+
+#NavBar nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+input {
+    height: 120%;
+    font-size: large;
+    margin: 5px 10px 5px 10px;
+    padding: 10px 0px 10px 5px;
+    text-align: center;
+}
+
+#registrarseButton {
+    width:min-content;
+    font-size: large;
+}
+
+#registrarseDivButton {
+    display: flex;
+    justify-content: center;
+}
+
+#logearseButton {
+    width:min-content;
+    font-size: large;
+    margin-top: 5px;
+}
+
+#logearseDivButton {
+    display: flex;
+    justify-content: center;
+}
+
+#unlog {
+        width:min-content;
+    font-size: small;
+    padding: 2px;
+}
