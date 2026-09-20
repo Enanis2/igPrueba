@@ -32,6 +32,10 @@ const Usuarios = sequelize.define(
         password: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        isBanned: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     },
     {

@@ -12,7 +12,8 @@ server.use(Express.json())
 server.use(cors({
     origin: 'http://localhost:5173',
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
-
+    allowedHeaders: 'Content-Type, autorizacion',
+    credentials: true,
 }))
 
 // server.use((req, res, next) => {

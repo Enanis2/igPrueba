@@ -45,7 +45,20 @@ const logearUsuario = async (req, res) => {
     }
 }
 
+const fetchMe = async (req, res) => {
+    try {
+        const usuarioDecoded = req.user
+        const usuario = await Usuarios.findOne({ where: { mail: usuarioDecoded.mail}})
+        if (usuario.dataValues.isBanned == true) {
+            return res.status(401).json({message: 'Usuario Baneado'})
+        }
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 module.exports = {
     registrarUsuario,
-    logearUsuario
+    logearUsuario,
+    fetchMe
 }
