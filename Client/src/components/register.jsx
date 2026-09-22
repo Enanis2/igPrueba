@@ -10,7 +10,8 @@ function Register() {
     const [password2, setPassword2] = useState("")
     const [response, setResponse] = useState(null)
     
-    const registrarse = async () => {
+    const registrarse = async (e) => {
+        e.preventDefault()
         if (password != password2) {
             setResponse("Las contraseñas no coinciden")
             return
@@ -37,13 +38,24 @@ function Register() {
 
     return (<>
         <h1>Soy el REGISTER</h1>
-        <input type="text" placeholder="Nombre" onChange={ (event) => { setNombre(event.target.value) } }/>
+        {/* <input type="text" placeholder="Nombre" onChange={ (event) => { setNombre(event.target.value) } }/>
         <input type="text" placeholder="UserName" onChange={ (event) => { setUserName(event.target.value) } }/>
         <input type="email" placeholder="Mail" onChange={ (event) => { setMail(event.target.value) } }/>
         <input type="password" placeholder="Password" onChange={ (event) => { setPassword(event.target.value) } }/>
         <input type="password" placeholder="Repita su Password" onChange={ (event) => { setPassword2(event.target.value) } }/>
-        {/* <input type="file" accept=".png" placeholder="Foto de perfil(Opcional)" onChange={ (event) => { setImg(event.target.value) } }/> */}
-        <div id="registrarseDivButton"><button onClick={registrarse} id="registrarseButton">REGISTRARSE</button></div>
+        <input type="file" accept=".png" placeholder="Foto de perfil(Opcional)" onChange={ (event) => { setImg(event.target.value) } }/>
+        <div id="registrarseDivButton"><button onClick={registrarse} id="registrarseButton">REGISTRARSE</button></div> */}
+
+        <form onSubmit={registrarse}>
+            <label>
+                <input type="text" required placeholder="Nombre" onChange={ (event) => { setNombre(event.target.value) } }/>
+                <input type="text" required placeholder="UserName" onChange={ (event) => { setUserName(event.target.value) } }/>
+                <input type="email" required placeholder="Mail" onChange={ (event) => { setMail(event.target.value) } }/>
+                <input type="password" required placeholder="Password" onChange={ (event) => { setPassword(event.target.value) } }/>
+                <input type="password" required placeholder="Repita su Password" onChange={ (event) => { setPassword2(event.target.value) } }/>
+            </label>
+            <div id="registrarseDivButton"><button type="submit" id="registrarseButton">REGISTRARSE</button></div>
+        </form>
         Respuesta: {response}
 
     </>)

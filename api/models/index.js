@@ -1,3 +1,7 @@
 const { Usuarios } = require('./usuarioModel')
+const { Posteos } = require('./postModel.js')
 
-module.exports = { Usuarios }
+Usuarios.hasMany(Posteos)
+Posteos.belongsTo(Usuarios)
+
+module.exports = { Usuarios, Posteos }

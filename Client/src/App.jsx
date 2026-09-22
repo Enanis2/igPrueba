@@ -10,10 +10,12 @@ import Register from './components/register'
 import Home from './components/home'
 import MiPerfil from './components/miperfil'
 import NavBar from './components/navbar'
+import Post from './components/post'
 
 function App() {
   const Navigate = useNavigate()  
   const [usuario, setUsuario] = useState(null)
+  const [post, setPost] = useState([])
   // localStorage.setItem("TOKEN", 'fasdf')
 
   const saberUsuario = async () => {
@@ -53,6 +55,7 @@ function App() {
         <Route path='/login' element={ <Login Usuario={usuario} stearUsuario={setUsuario} />} />
         <Route path='/registro' element={ <Register  />} />
         <Route path='/' element={ <Home  />} />
+        <Route path='/post' element={ <Post Usuario={usuario} />} />
         <Route path='/miperfil' element={ <MiPerfil Usuario={usuario} />} />
       </Routes>
     </>

@@ -30,13 +30,13 @@ input {
     justify-content: center;
 }
 
-#logearseButton {
+.logearseButton {
     width:min-content;
     font-size: large;
     margin-top: 5px;
 }
 
-#logearseDivButton {
+.logearseDivButton {
     display: flex;
     justify-content: center;
 }
@@ -45,4 +45,9 @@ input {
         width:min-content;
     font-size: small;
     padding: 2px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
 }

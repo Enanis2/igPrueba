@@ -7,9 +7,6 @@ const SECRET_KEY = "Sapapapa"
 const registrarUsuario = async (req, res) => {
     try {
         const { nombre, userName, mail, password, img } = req.body
-        if (!nombre || !userName || !mail || !password) {
-            return res.status(422).json({ message: "Faltan datoides" })
-        }
 
         hashedPassword = await bcrypt.hash(password, SALTOS)
         const usuarioRegistrado = await Usuarios.create({

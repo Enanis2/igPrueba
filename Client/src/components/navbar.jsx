@@ -21,6 +21,9 @@ function NavBar(props) {
                 {props.Usuario?.userName && (
                     <div><Link to='/miperfil'>Perfil</Link></div>
                 )}
+                {props.Usuario?.userName && (
+                    <div><Link to='/post'>Postear</Link></div>
+                )}
                 {!props.Usuario?.userName && (
                     <div><Link to='/registro'>Registrarse</Link></div>
                 )}

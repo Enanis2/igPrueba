@@ -7,6 +7,10 @@ function MiPerfil(props) {
                 <h3>NOMBRE: {props.Usuario.nombre}</h3>
                 <h3>USERNAME: {props.Usuario.userName}</h3>
                 <h3>MAIL: {props.Usuario.mail}</h3>
+                <p></p>
+                {props.Usuario?.userName && (
+                    <div><Link to='/posteos'>MisPosts</Link></div>
+                )}
             </div>
         )}
         {!props.Usuario?.userName && (

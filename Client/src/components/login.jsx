@@ -8,7 +8,8 @@ function Login(props) {
     const [password, setPassword] = useState("")
     const [response, setResponse] = useState(null)
     
-    const logearse = async () => {
+    const logearse = async (e) => {
+        e.preventDefault()
         try {
             const usuario = await axios.post('http://localhost:3000/usuarios/logear', {
                 mail,
@@ -28,12 +29,20 @@ function Login(props) {
         <h1>Soy el Login</h1>
 
         {!props.Usuario?.userName && (
-            <div>
-                <input type="email" placeholder="Mail" onChange={ (event) => { setMail(event.target.value) } }/>
-                <input type="password" placeholder="Password" onChange={ (event) => { setPassword(event.target.value) } }/>
-                <div id="logearseDivButton"><button onClick={logearse} id="logearseButton">LOGEARSE</button></div>
-                Respuesta: {response}    
-            </div>
+            // <div>
+            //     <input type="email" placeholder="Mail" onChange={ (event) => { setMail(event.target.value) } }/>
+            //     <input type="password" placeholder="Password" onChange={ (event) => { setPassword(event.target.value) } }/>
+            //     <div id="logearseDivButton"><button onClick={logearse} id="logearseButton">LOGEARSE</button></div>
+            //     Respuesta: {response}    
+            // </div>
+            <form onSubmit={logearse}>
+                <label>
+                    <input type="email" required placeholder="Mail" onChange={ (event) => { setMail(event.target.value) } }/>
+                    <input type="password" required placeholder="Password" onChange={ (event) => { setPassword(event.target.value) } }/>
+                </label>
+                <div className="logearseDivButton"><button type="submit" className="logearseButton">LOGEARSE</button></div>
+            </form>
+
         )}
         {props.Usuario?.userName && (
             <div>
