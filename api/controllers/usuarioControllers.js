@@ -54,8 +54,26 @@ const fetchMe = async (req, res) => {
     }
 }
 
+const subirDocumento = async (req, res) => {
+    try {
+        const { document, id } = req.body
+        const user = await Usuarios.update(
+            { documentUrl: document, verificationStatus: 'verified' },
+            {
+                where: {
+                    id: id
+                }
+            }
+        )
+        res.status(200).json(user)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 module.exports = {
     registrarUsuario,
     logearUsuario,
-    fetchMe
+    fetchMe,
+    subirDocumento
 }

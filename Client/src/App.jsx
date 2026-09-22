@@ -64,7 +64,7 @@ function App() {
       <Routes>
         <Route path='/login' element={ <Login Usuario={usuario} stearUsuario={setUsuario} />} />
         <Route path='/registro' element={ <Register  />} />
-        <Route path='/' element={ <Home  />} />
+        <Route path='/' element={ <Home usuario={usuario} />} />
         <Route path='/post' element={ <Post Usuario={usuario} mapear={mapearPosts} posts={post} />} />
         <Route path='/miperfil' element={ <MiPerfil Usuario={usuario} mapear={mapearPosts} posts={ultimosCinco} />} />
       </Routes>

@@ -13,4 +13,25 @@ const verifyJWT = async (req, res, next) => {
     }
 }
 
-module.exports = {verifyJWT}
+const multer = async (req, res, next) => {
+    try {
+        console.log("llegue")
+        const {document, id} = req.body
+        if (!document || document == "") {
+            const user = await Usuarios.update(
+                { verificationStatus: 'pending' },
+                {
+                    where: {
+                        id: id
+                    }
+                }
+            )
+            return res.state(404).json({message: "No subiste nada", user})
+        }
+        next()
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+module.exports = {verifyJWT, multer}

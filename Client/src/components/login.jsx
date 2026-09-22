@@ -27,7 +27,6 @@ function Login(props) {
 
     return (<>
         <h1>Soy el Login</h1>
-
         {!props.Usuario?.userName && (
             // <div>
             //     <input type="email" placeholder="Mail" onChange={ (event) => { setMail(event.target.value) } }/>

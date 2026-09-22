@@ -36,6 +36,10 @@ const Usuarios = sequelize.define(
         isBanned: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        documentUrl: DataTypes.STRING,
+        verificationStatus: {
+            type: DataTypes.STRING
         }
     },
     {
