@@ -15,8 +15,9 @@ import Post from './components/post'
 function App() {
   const Navigate = useNavigate()  
   const [usuario, setUsuario] = useState(null)
+  const [id, setId] = useState(1)
   const [post, setPost] = useState([])
-  // localStorage.setItem("TOKEN", 'fasdf')
+  const [ultimosCinco, setUltimosCinco] = useState([])
 
   const saberUsuario = async () => {
     const token = localStorage.getItem("TOKEN")
@@ -32,8 +33,17 @@ function App() {
       if (error.status = 401) {
         setUsuario(null)
         localStorage.setItem("TOKEN", null)
-        
       }
+      console.log({error})
+    }
+  }
+
+  const mapearPosts = async () => {
+    try {
+      const posts = await axios.get(`http://localhost:3000/posteos/mapear/${usuario.id}`)
+      setPost(posts.data)
+      setUltimosCinco(posts.data.slice(0,5))
+    } catch (error) {
       console.log({error})
     }
   }
@@ -44,9 +54,9 @@ function App() {
     }
   })
 
-  useEffect(()=>{
-    localStorage.setItem("TOKEN", null)
-  }, [])
+  // useEffect(()=>{
+  //   localStorage.setItem("TOKEN", null)
+  // }, [])
 
   return (
     <>
@@ -55,8 +65,8 @@ function App() {
         <Route path='/login' element={ <Login Usuario={usuario} stearUsuario={setUsuario} />} />
         <Route path='/registro' element={ <Register  />} />
         <Route path='/' element={ <Home  />} />
-        <Route path='/post' element={ <Post Usuario={usuario} />} />
-        <Route path='/miperfil' element={ <MiPerfil Usuario={usuario} />} />
+        <Route path='/post' element={ <Post Usuario={usuario} mapear={mapearPosts} posts={post} />} />
+        <Route path='/miperfil' element={ <MiPerfil Usuario={usuario} mapear={mapearPosts} posts={ultimosCinco} />} />
       </Routes>
     </>
   )

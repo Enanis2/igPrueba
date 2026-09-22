@@ -8,14 +8,13 @@ function NavBar(props) {
     }
 
     return (<>
-        <div id="NavBar">            
+        <div id="NavBar">
             <nav>
                 {props.Usuario?.userName && (
                     <div>
                         <div>UserName: {props.Usuario.userName}</div>
                         <button id='unlog' onDoubleClick={unlog}>Deslogearse</button>
                     </div>
-
                 )}
                 <Link to="/">Home</Link>
                 {props.Usuario?.userName && (

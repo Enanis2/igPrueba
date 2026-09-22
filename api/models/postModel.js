@@ -16,6 +16,10 @@ const Posteos = sequelize.define(
         content: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        subidoEl: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
         }
     },
     {

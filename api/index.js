@@ -4,6 +4,7 @@ const server = Express()
 const cors = require('cors')
 require('./models/index.js')
 const usuarioRoutes = require('./routes/usuarioRoutes.js')
+const postRoutes = require('./routes/postRoutes.js')
 const PORT = 3000
 
 
@@ -28,6 +29,7 @@ server.use(cors({
 // })
 
 server.use("/usuarios", usuarioRoutes)
+server.use("/posteos", postRoutes)
 
 server.listen(PORT, async () => {
     try {

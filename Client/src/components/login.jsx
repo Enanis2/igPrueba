@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 function Login(props) {
 
-    const [mail, setMail] = useState("")
+    const [userName, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [response, setResponse] = useState(null)
     
@@ -12,7 +12,7 @@ function Login(props) {
         e.preventDefault()
         try {
             const usuario = await axios.post('http://localhost:3000/usuarios/logear', {
-                mail,
+                userName,
                 password
             })
 
@@ -37,7 +37,7 @@ function Login(props) {
             // </div>
             <form onSubmit={logearse}>
                 <label>
-                    <input type="email" required placeholder="Mail" onChange={ (event) => { setMail(event.target.value) } }/>
+                    <input type="text" required placeholder="userName" onChange={ (event) => { setUsername(event.target.value) } }/>
                     <input type="password" required placeholder="Password" onChange={ (event) => { setPassword(event.target.value) } }/>
                 </label>
                 <div className="logearseDivButton"><button type="submit" className="logearseButton">LOGEARSE</button></div>

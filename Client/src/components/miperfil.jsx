@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
 
 function MiPerfil(props) {
+
+    useEffect(()=>{
+        if (props.Usuario) {
+            props.mapear()
+        }
+    }, [])
+
     return (<>
         {props.Usuario?.userName && (
             <div>
@@ -11,6 +19,14 @@ function MiPerfil(props) {
                 {props.Usuario?.userName && (
                     <div><Link to='/posteos'>MisPosts</Link></div>
                 )}
+                <p></p>
+                <ul>
+                    {props.posts.map((post) => {
+                    return(<li>
+                        {post.titulo} :  {post.content}
+                    </li>)
+                    })}
+                </ul>
             </div>
         )}
         {!props.Usuario?.userName && (
